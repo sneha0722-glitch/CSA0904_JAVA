@@ -51,7 +51,7 @@ public class AppointmentDesk extends JFrame {
         }
         bookingInProgress = true;
         status.setText("Booking...");
-        Timer timer = new Timer(900, e -> {
+        javax.swing.Timer timer = new javax.swing.Timer(900, e -> {
             bookingInProgress = false;
             status.setText("Appointment confirmed for " + patientId.getText().trim()
                 + " with " + doctor.getSelectedItem() + " at " + slot.getSelectedItem());
