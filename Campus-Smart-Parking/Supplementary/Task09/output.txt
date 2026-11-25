@@ -1,0 +1,8 @@
+Ticket #1001 | TN01AB1234 | Floor 1 Slot 1 | STANDARD | Entry [runtime timestamp]
+Ticket #1002 | TN01EV5678 | Floor 1 Slot 5 | EV_CHARGING | Entry [runtime timestamp]
+Ticket #1003 | TN01TW9999 | Floor 1 Slot 2 | STANDARD | Entry [runtime timestamp]
+Available slots after entry: 27
+Car fee for 2h 10m: Rs.120.0
+EV fee for 2h 10m: Rs.90.0
+Monthly pass fee: Rs.0.0
+Available slots after exit: 30
