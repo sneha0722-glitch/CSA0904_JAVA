@@ -1,0 +1,4 @@
+# A5 Transactions and injection
+Transfer pseudocode: save original autoCommit; setAutoCommit(false); debit 500 with condition balance>=500; require one affected row; credit 500 to destination; require one affected row; commit. On any error rollback; finally restore autoCommit. Use same connection and database constraints/row locks to prevent concurrent overspending.
+Unsafe SQL concatenation can be bypassed by input such as username admin' followed by SQL comment syntax, which can comment out the password predicate (exact syntax depends on DB). Use SELECT id FROM users WHERE id=? AND pwd_hash=? and bind both with PreparedStatement. Store salted password hashes, not plaintext.
+Two auto-commit statements are independent: a crash after debit but before credit loses money; reverse order can create money. A transaction has commit/logging overhead but guarantees atomicity. Correctness outweighs small timing differences.
