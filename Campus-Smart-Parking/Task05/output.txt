@@ -1,0 +1,3 @@
+North ticket: 1001
+South ticket: 1002
+Next available number: 1002
