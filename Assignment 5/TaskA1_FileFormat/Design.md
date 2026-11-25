@@ -1,0 +1,6 @@
+# A1 File design
+Text: UTF-8 CSV fields in order pass_id, reg_no, name, route_no, boarding_stop, validity_date (ISO yyyy-MM-dd), amount. Quote fields containing comma/quote/newline and double embedded quotes; the sample TODO uses simple comma split and assumes no commas in values.
+Binary DataOutputStream order: writeUTF(passId), writeUTF(regNo), writeUTF(name), writeInt(routeNo), writeUTF(stop), writeUTF(date), writeDouble(amount); prepend format version. writeUTF is length-prefixed, not a fixed-size field.
+Add: validate then append with BufferedWriter in try-with-resources. Find/list: BufferedReader scan; parse and validate each line; skip/quarantine malformed rows and continue. Character streams suit text; FileInputStream/FileOutputStream suit raw binary.
+Damaged data: verify field count, required values, route integer, date and finite positive amount. Missing file: report empty store for search or create on add. Power loss can leave a partial last line; reject it. For stronger whole-file updates write a temp file and atomically rename; retain backup/checksum.
+RandomAccessFile fixed records: seek to i*recordSize is O(1) if index i is known; ID search remains O(n) unless a separate ID index is maintained. Fixed-width padded strings waste unused bytes; delimited records are variable-size and compact.
