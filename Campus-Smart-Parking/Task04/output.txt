@@ -1,0 +1,2 @@
+Ticket: 1001, Vehicle: TN01AB1234, Entry: [runtime timestamp]
+Ticket: 1001, Vehicle: TN01AB1234, Entry: [same copied timestamp]
