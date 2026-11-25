@@ -1,0 +1,5 @@
+Normal fee: Rs.40.0
+Pass holder fee: Rs.0.0
+ParkCar fee: Rs.80.0
+ParkEV fee: Rs.60.0
+ParkBike fee: Rs.30.0
