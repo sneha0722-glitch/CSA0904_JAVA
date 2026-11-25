@@ -1,0 +1,4 @@
+# A2 Buffered I/O
+A 50 MiB file has 52,428,800 bytes, so a one-byte loop makes about 52.4 million Java read() calls. Even when OS caching prevents physical disk reads, per-call Java/native overhead is expensive.
+Use BufferedInputStream or a 64 KiB byte[] block and count newline bytes in memory. Time remains O(N), extra memory O(B); read calls become about ceil(N/B), roughly 800 for 64 KiB blocks.
+Buffering gives little benefit if the source already returns large blocks, data is already in memory, or the bottleneck is CPU/network latency. Files.readAllLines is O(N) time and O(N) memory, with object overhead beyond the 50 MiB file size; streaming is O(N) time and O(B) memory. Use readAllLines for small files that fit comfortably in heap, streaming for large logs.
