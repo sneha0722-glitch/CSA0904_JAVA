@@ -2,6 +2,8 @@ import java.io.*;
 import java.nio.file.*;
 import java.nio.file.StandardOpenOption;
 import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.List;
 public class PassStore {
  private final Path file;
  PassStore(Path file){this.file=file;}
@@ -19,6 +21,20 @@ public class PassStore {
     if(f[0].equals(passId))return f;
    }
   }return null;
+ }
+ public List<String[]> listByRoute(int wantedRoute)throws IOException{
+  List<String[]> matches=new ArrayList<>();
+  if(Files.notExists(file))return matches;
+  try(BufferedReader r=Files.newBufferedReader(file)){
+   String line;while((line=r.readLine())!=null){
+    String[] f=line.split(",",-1);
+    if(f.length!=5||f[0].isBlank()||f[1].isBlank()||f[2].isBlank())continue;
+    try{int route=Integer.parseInt(f[3]);double amount=Double.parseDouble(f[4]);
+     if(route<0||!Double.isFinite(amount)||amount<0)continue;
+     if(route==wantedRoute)matches.add(f);
+    }catch(NumberFormatException ex){ /* skip damaged record */ }
+   }
+  }return matches;
  }
  public static void main(String[] args)throws IOException{
   Path f=Files.createTempFile("passes",".csv");PassStore s=new PassStore(f);
