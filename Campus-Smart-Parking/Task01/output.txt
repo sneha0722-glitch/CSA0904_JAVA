@@ -1,0 +1,4 @@
+Vehicle: TN01AB1234 | Type: Car
+Slot number: 101
+Occupied before parking: false
+Occupied after parking: true
