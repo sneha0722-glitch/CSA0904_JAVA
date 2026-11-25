@@ -1,0 +1,4 @@
+Floor 1: [ ] [X] [ ] [ ] 
+Floor 2: [ ] [ ] [ ] 
+Floor 3: [ ] [ ] [ ] [X] [ ] 
+Total slots: 12
