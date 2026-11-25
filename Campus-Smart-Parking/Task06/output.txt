@@ -1,0 +1,3 @@
+Car: TN01CA1111
+Electric car: TN01EV2222 (charging compatible)
+Two-wheeler: TN01TW3333
